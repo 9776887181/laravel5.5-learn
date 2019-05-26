@@ -30,7 +30,12 @@ return [
         'jobs'          => [],
         'max_wait_time' => 5,
     ],
-    'events'                   => [],
+    'events'                   => [
+        \App\Events\TestEvent::class => [
+            \App\Listeners\TestListener::class,
+            \App\Listeners\Test1Listener::class,
+        ],
+    ],
     'swoole_tables'            => [],
     'register_providers'       => [],
     'cleaners'                 => [],
@@ -39,7 +44,7 @@ return [
         'dispatch_mode'      => 2,
         'reactor_num'        => function_exists('swoole_cpu_num') ? swoole_cpu_num() * 2 : 4,
         'worker_num'         => function_exists('swoole_cpu_num') ? swoole_cpu_num() * 2 : 8,
-        //'task_worker_num'    => function_exists('swoole_cpu_num') ? swoole_cpu_num() * 2 : 8,
+        'task_worker_num'    => function_exists('swoole_cpu_num') ? swoole_cpu_num() * 2 : 8,
         'task_ipc_mode'      => 1,
         'task_max_request'   => 8000,
         'task_tmpdir'        => @is_writable('/dev/shm/') ? '/dev/shm' : '/tmp',
@@ -57,6 +62,10 @@ return [
         'enable_reuse_port'  => true,
         'enable_coroutine'   => false,
         'http_compression'   => false,
+
+         // 表示每60秒遍历一次，一个连接如果600秒内未向服务器发送任何数据，此连接将被强制关闭
+        'heartbeat_idle_time'      => 600,
+        'heartbeat_check_interval' => 60,
 
         /**
          * More settings of Swoole

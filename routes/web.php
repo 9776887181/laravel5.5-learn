@@ -11,6 +11,11 @@
 |
 */
 
+use Hhxsv5\LaravelS\Swoole\Task\Event;
+
 Route::get('/', function () {
+    $result = Event::fire(new App\Events\TestEvent('event data'));
+    dump($result);
+    return request();
     return view('welcome');
 });
