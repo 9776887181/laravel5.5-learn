@@ -26,7 +26,7 @@ return [
     'sockets'                  => [],
     'processes'                => [],
     'timer'                    => [
-        'enable'        => true,
+        'enable'        => false,
         'jobs'          => [
             \App\Jobs\Timer\TestCronJob::class,
         ],

@@ -17,7 +17,9 @@ use Hhxsv5\LaravelS\Swoole\Task\Event;
 use Hhxsv5\LaravelS\Swoole\Task\Task;
 
 Route::get('/', function () {
-    $result = Event::fire(new App\Events\TestEvent('event data'));
+    dump(app('swoole'));
+    
+    // $result = Event::fire(new App\Events\TestEvent('event data'));
     // dump($result);
 
     // dump(Task::deliver(new \App\Task\TestTask('ooooo')));
