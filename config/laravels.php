@@ -26,8 +26,10 @@ return [
     'sockets'                  => [],
     'processes'                => [],
     'timer'                    => [
-        'enable'        => false,
-        'jobs'          => [],
+        'enable'        => true,
+        'jobs'          => [
+            \App\Jobs\Timer\TestCronJob::class,
+        ],
         'max_wait_time' => 5,
     ],
     'events'                   => [
