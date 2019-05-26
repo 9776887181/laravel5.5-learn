@@ -20,37 +20,20 @@ return [
     ],
     'event_handlers'           => [],
     'websocket'                => [
-        'enable' => false,
-        //'handler' => XxxWebSocketHandler::class,
+        'enable' => true,
+        'handler' => App\Services\WebSocketService::class,
     ],
     'sockets'                  => [],
-    'processes'                => [
-        //[
-        //    'class'    => \App\Processes\TestProcess::class,
-        //    'redirect' => false, // Whether redirect stdin/stdout, true or false
-        //    'pipe'     => 0 // The type of pipeline, 0: no pipeline 1: SOCK_STREAM 2: SOCK_DGRAM
-        //],
-    ],
+    'processes'                => [],
     'timer'                    => [
         'enable'        => false,
-        'jobs'          => [
-            // Enable LaravelScheduleJob to run `php artisan schedule:run` every 1 minute, replace Linux Crontab
-            //\Hhxsv5\LaravelS\Illuminate\LaravelScheduleJob::class,
-            // Two ways to configure parameters:
-            // [\App\Jobs\XxxCronJob::class, [1000, true]], // Pass in parameters when registering
-            // \App\Jobs\XxxCronJob::class, // Override the corresponding method to return the configuration
-        ],
+        'jobs'          => [],
         'max_wait_time' => 5,
     ],
     'events'                   => [],
     'swoole_tables'            => [],
     'register_providers'       => [],
-    'cleaners'                 => [
-        //Hhxsv5\LaravelS\Illuminate\Cleaners\SessionCleaner::class, // If you use the session/authentication in your project, please uncomment this line
-        //Hhxsv5\LaravelS\Illuminate\Cleaners\AuthCleaner::class,    // If you use the authentication/passport in your project, please uncomment this line
-        //Hhxsv5\LaravelS\Illuminate\Cleaners\JWTCleaner::class,     // If you use the package "tymon/jwt-auth" in your project, please uncomment this line
-        // ...
-    ],
+    'cleaners'                 => [],
     'swoole'                   => [
         'daemonize'          => env('LARAVELS_DAEMONIZE', false),
         'dispatch_mode'      => 2,
